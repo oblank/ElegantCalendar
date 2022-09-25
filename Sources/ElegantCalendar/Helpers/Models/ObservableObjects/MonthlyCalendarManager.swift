@@ -96,8 +96,12 @@ extension MonthlyCalendarManager {
             UIImpactFeedbackGenerator.generateSelectionHaptic()
         }
 
-        selectedDate = day
-        delegate?.calendar(didSelectDay: day)
+        if selectedDate == day {
+            selectedDate = nil
+        } else {
+            selectedDate = day
+            delegate?.calendar(didSelectDay: day)
+        }
     }
 
     @discardableResult

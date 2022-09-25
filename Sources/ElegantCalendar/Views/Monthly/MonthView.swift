@@ -24,7 +24,7 @@ struct MonthView: View, MonthlyCalendarManagerDirectAccess {
     }
 
     var body: some View {
-        VStack(spacing: 40) {
+        VStack(spacing: 15) {
             monthYearHeader
                 .padding(.leading, CalendarConstants.Monthly.outerHorizontalPadding)
                 .onTapGesture { self.communicator?.showYearlyView() }
@@ -33,7 +33,12 @@ struct MonthView: View, MonthlyCalendarManagerDirectAccess {
                 calenderAccessoryView
                     .padding(.leading, CalendarConstants.Monthly.outerHorizontalPadding)
                     .id(selectedDate!)
+            } else {
+                calenderMonthAccessoryView
+                    .padding(.leading, CalendarConstants.Monthly.outerHorizontalPadding)
+                    .id(currentMonth.fullMonth)
             }
+            
             Spacer()
         }
         .padding(.top, CalendarConstants.Monthly.topPadding)
@@ -45,12 +50,12 @@ struct MonthView: View, MonthlyCalendarManagerDirectAccess {
 private extension MonthView {
 
     var monthYearHeader: some View {
-        HStack {
-            VStack(alignment: .leading) {
+        VStack(alignment: .leading) {
+            HStack(alignment: .center) {
                 monthText
                 yearText
             }
-            Spacer()
+            Divider()
         }
     }
 
@@ -58,7 +63,7 @@ private extension MonthView {
         Text(month.fullMonth.uppercased())
             .font(.system(size: 26))
             .bold()
-            .tracking(7)
+            .tracking(2)
             .foregroundColor(isWithinSameMonthAndYearAsToday ? theme.titleColor : .primary)
     }
 
@@ -75,10 +80,11 @@ private extension MonthView {
 private extension MonthView {
 
     var weeksViewWithDaysOfWeekHeader: some View {
-        VStack(spacing: 32) {
+        VStack {
             daysOfWeekHeader
             weeksViewStack
         }
+        .padding(.bottom, 10)
     }
 
     var daysOfWeekHeader: some View {
@@ -86,6 +92,7 @@ private extension MonthView {
             ForEach(calendar.dayOfWeekInitials, id: \.self) { dayOfWeek in
                 Text(dayOfWeek)
                     .font(.caption)
+                    .fontWeight(.semibold)
                     .frame(width: CalendarConstants.Monthly.dayWidth)
                     .foregroundColor(.gray)
             }
@@ -108,6 +115,9 @@ private extension MonthView {
         CalendarAccessoryView(calendarManager: calendarManager)
     }
 
+    var calenderMonthAccessoryView: some View {
+        CalendarMonthAccessoryView(calendarManager: calendarManager)
+    }
 }
 
 private struct CalendarAccessoryView: View, MonthlyCalendarManagerDirectAccess {
@@ -177,6 +187,56 @@ private struct CalendarAccessoryView: View, MonthlyCalendarManagerDirectAccess {
         let daysDescription = isBeforeToday ? "DAYS AGO" : "DAYS FROM TODAY"
 
         return Text("\(abs(numberOfDaysFromTodayToSelectedDate)) \(daysDescription)")
+            .font(.system(size: 10))
+            .foregroundColor(.gray)
+    }
+
+}
+
+private struct CalendarMonthAccessoryView: View, MonthlyCalendarManagerDirectAccess {
+
+    let calendarManager: MonthlyCalendarManager
+
+    @State private var isVisible = false
+
+    var body: some View {
+        VStack {
+            selectedDayInformationView
+            GeometryReader { geometry in
+                self.datasource?.calendar(viewForSelectedMonth: currentMonth,
+                                          dimensions: geometry.size)
+            }
+        }
+        .onAppear(perform: makeVisible)
+        .opacity(isVisible ? 1 : 0)
+        .animation(.easeInOut(duration: 0.5))
+    }
+
+    private func makeVisible() {
+        isVisible = true
+    }
+
+    private var selectedDayInformationView: some View {
+        HStack {
+            VStack(alignment: .leading) {
+                dayOfWeekWithMonthAndDayText
+                daysFromTodayText
+            }
+            Spacer()
+        }
+    }
+
+    private var dayOfWeekWithMonthAndDayText: some View {
+        return Text(currentMonth.fullMonth.uppercased())
+            .font(.subheadline)
+            .bold()
+    }
+
+    private var daysFromTodayText: some View {
+        let range = calendar.range(of: .day, in: .month, for: currentMonth)!
+        let numDays = range.count
+        
+        return Text("\(numDays) days")
             .font(.system(size: 10))
             .foregroundColor(.gray)
     }
