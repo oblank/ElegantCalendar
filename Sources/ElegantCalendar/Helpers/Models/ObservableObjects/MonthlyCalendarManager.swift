@@ -82,11 +82,12 @@ extension MonthlyCalendarManager {
         let didScrollToMonth = scrollToMonth(day, animated: animated)
         let canSelectDay = datasource?.calendar(canSelectDate: day) ?? true
 
-        if canSelectDay {
-            DispatchQueue.main.asyncAfter(deadline: .now()+0.15) {
-                self.dayTapped(day: day, withHaptic: !didScrollToMonth)
-            }
-        }
+        // 跳转回来不展示当天而展示当月的情况
+//        if canSelectDay {
+//            DispatchQueue.main.asyncAfter(deadline: .now()+0.15) {
+//                self.dayTapped(day: day, withHaptic: !didScrollToMonth)
+//            }
+//        }
 
         return canSelectDay
     }

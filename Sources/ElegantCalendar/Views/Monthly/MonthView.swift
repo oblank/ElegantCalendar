@@ -84,7 +84,6 @@ private extension MonthView {
             daysOfWeekHeader
             weeksViewStack
         }
-        .padding(.bottom, 10)
     }
 
     var daysOfWeekHeader: some View {
@@ -138,7 +137,7 @@ private struct CalendarAccessoryView: View, MonthlyCalendarManagerDirectAccess {
 
     var body: some View {
         VStack {
-            selectedDayInformationView
+//            selectedDayInformationView
             GeometryReader { geometry in
                 self.datasource?.calendar(viewForSelectedDate: self.selectedDate!,
                                           dimensions: geometry.size)
@@ -201,7 +200,7 @@ private struct CalendarMonthAccessoryView: View, MonthlyCalendarManagerDirectAcc
 
     var body: some View {
         VStack {
-            selectedDayInformationView
+//            selectedDayInformationView
             GeometryReader { geometry in
                 self.datasource?.calendar(viewForSelectedMonth: currentMonth,
                                           dimensions: geometry.size)
