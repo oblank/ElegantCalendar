@@ -53,7 +53,11 @@ struct DayView: View, MonthlyCalendarManagerDirectAccess {
     }
 
     private var foregroundColor: Color {
-        if isDayToday {
+        // 当天有数据
+        if (datasource != nil) && datasource?.calendar(backgroundColorOpacityForDate: day) ?? 0 > 0 {
+            return .white
+        }
+        else if isDayToday {
             return theme.todayTextColor
         } else {
             return theme.textColor
@@ -95,7 +99,7 @@ private struct CircularSelectionView: View {
     var body: some View {
         Circle()
             .stroke(Color.primary, lineWidth: 2)
-            .frame(width: radius, height: radius)
+            .frame(width: radius, height: radius/1.3)
             .opacity(startBounce ? 1 : 0)
             .animation(.interpolatingSpring(stiffness: 150, damping: 10))
             .onAppear(perform: startBounceAnimation)
