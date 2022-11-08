@@ -44,7 +44,7 @@ struct DayView: View, MonthlyCalendarManagerDirectAccess {
             .background(backgroundColor)
             .clipShape(Circle())
             .opacity(opacity)
-            .overlay(isSelected ? CircularSelectionView() : nil)
+            .overlay(isSelected ? CircularSelectionView(opacity: datasource?.calendar(backgroundColorOpacityForDate: day) ?? 1) : nil)
             .onTapGesture(perform: notifyManager)
     }
 
@@ -93,12 +93,13 @@ struct DayView: View, MonthlyCalendarManagerDirectAccess {
 }
 
 private struct CircularSelectionView: View {
-
     @State private var startBounce = false
+    
+    var opacity: CGFloat = 1
 
     var body: some View {
         Circle()
-            .stroke(Color.primary, lineWidth: 2)
+            .stroke(opacity > 0.5 ? Color.green : Color.primary, lineWidth: 2)
             .frame(width: radius, height: radius/1.3)
             .opacity(startBounce ? 1 : 0)
             .animation(.interpolatingSpring(stiffness: 150, damping: 10))

@@ -79,7 +79,7 @@ extension MonthlyCalendarManager {
 
     @discardableResult
     public func scrollToDay(_ day: Date, animated: Bool = true) -> Bool {
-        let didScrollToMonth = scrollToMonth(day, animated: animated)
+        _ = scrollToMonth(day, animated: animated)
         let canSelectDay = datasource?.calendar(canSelectDate: day) ?? true
 
         // 跳转回来不展示当天而展示当月的情况
