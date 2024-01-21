@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -27,6 +27,7 @@
 		1E995AF724A552BA00F436BE /* VisitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E995AF324A552BA00F436BE /* VisitCell.swift */; };
 		1EE7C01B24BEA4B3000573A2 /* ChangeThemeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE7C01A24BEA4B3000573A2 /* ChangeThemeButton.swift */; };
 		1EE7C01D24BEA55B000573A2 /* Color+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE7C01C24BEA55B000573A2 /* Color+Custom.swift */; };
+		C689F0052B3DBB9100327683 /* ElegantCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = C689F0042B3DBB9100327683 /* ElegantCalendar */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,7 +41,6 @@
 		1E029CB024A4450200A81FFD /* ExampleCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleCalendarView.swift; sourceTree = "<group>"; };
 		1E029CB124A4450200A81FFD /* ExampleMonthlyCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleMonthlyCalendarView.swift; sourceTree = "<group>"; };
 		1E029CB224A4450200A81FFD /* ExampleYearlyCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleYearlyCalendarView.swift; sourceTree = "<group>"; };
-		1E161AF524D5F43C00CA2B7F /* ElegantCalendar */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ElegantCalendar; path = ../..; sourceTree = "<group>"; };
 		1E161AF624D5F46200CA2B7F /* Date+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Additions.swift"; sourceTree = "<group>"; };
 		1E161AFB24D5F51000CA2B7F /* LightDarkThemePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDarkThemePreview.swift; sourceTree = "<group>"; };
 		1E161AFD24D5F59500CA2B7F /* ElegantCalendar.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = ElegantCalendar.xcassets; path = ../ElegantCalendar.xcassets; sourceTree = "<group>"; };
@@ -60,6 +60,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E161AFA24D5F47D00CA2B7F /* ElegantCalendar in Frameworks */,
+				C689F0052B3DBB9100327683 /* ElegantCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,7 +98,6 @@
 				1E029C7C24A4448A00A81FFD /* Assets.xcassets */,
 				1E029C8124A4448A00A81FFD /* LaunchScreen.storyboard */,
 				1E029C8424A4448A00A81FFD /* Info.plist */,
-				1E161AF524D5F43C00CA2B7F /* ElegantCalendar */,
 				1E029C7E24A4448A00A81FFD /* Preview Content */,
 			);
 			path = Example;
@@ -176,6 +176,7 @@
 			name = Example;
 			packageProductDependencies = (
 				1E161AF924D5F47D00CA2B7F /* ElegantCalendar */,
+				C689F0042B3DBB9100327683 /* ElegantCalendar */,
 			);
 			productName = Example;
 			productReference = 1E029C7324A4448A00A81FFD /* Example.app */;
@@ -206,6 +207,7 @@
 			);
 			mainGroup = 1E029C6A24A4448A00A81FFD;
 			packageReferences = (
+				C689F0032B3DBB9100327683 /* XCRemoteSwiftPackageReference "ElegantCalendar" */,
 			);
 			productRefGroup = 1E029C7424A4448A00A81FFD /* Products */;
 			projectDirPath = "";
@@ -387,7 +389,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Example/Preview Content\"";
-				DEVELOPMENT_TEAM = 75H2NCGMKS;
+				DEVELOPMENT_TEAM = 692S4255HR;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -395,7 +397,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kevinli.Example;
+				PRODUCT_BUNDLE_IDENTIFIER = com.oblank.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -408,7 +410,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Example/Preview Content\"";
-				DEVELOPMENT_TEAM = 75H2NCGMKS;
+				DEVELOPMENT_TEAM = 692S4255HR;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -416,7 +418,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kevinli.Example;
+				PRODUCT_BUNDLE_IDENTIFIER = com.oblank.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -446,9 +448,25 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		C689F0032B3DBB9100327683 /* XCRemoteSwiftPackageReference "ElegantCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/oblank/ElegantCalendar";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		1E161AF924D5F47D00CA2B7F /* ElegantCalendar */ = {
 			isa = XCSwiftPackageProductDependency;
+			productName = ElegantCalendar;
+		};
+		C689F0042B3DBB9100327683 /* ElegantCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C689F0032B3DBB9100327683 /* XCRemoteSwiftPackageReference "ElegantCalendar" */;
 			productName = ElegantCalendar;
 		};
 /* End XCSwiftPackageProductDependency section */

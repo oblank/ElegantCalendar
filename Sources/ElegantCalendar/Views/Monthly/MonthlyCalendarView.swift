@@ -64,7 +64,13 @@ public struct MonthlyCalendarView: View, MonthlyCalendarManagerDirectAccess {
     }
 
     private func monthView(for page: Int) -> AnyView {
-        MonthView(calendarManager: calendarManager, month: months[page])
+        var month: Date
+        if page > months.count {
+            month = months.last ?? Date()
+        } else {
+            month = months[page]
+        }
+        return MonthView(calendarManager: calendarManager, month: month)
             .environment(\.calendarTheme, theme)
             .erased
     }

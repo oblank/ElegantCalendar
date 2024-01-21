@@ -54,7 +54,7 @@ public class MonthlyCalendarManager: ObservableObject, ConfigurationDirectAccess
 extension MonthlyCalendarManager {
 
     func configureNewMonth(at page: Int) {
-        if months[page] != currentMonth {
+        if months.count > page, months[page] != currentMonth {
             currentMonth = months[page]
             selectedDate = nil
 
