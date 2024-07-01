@@ -40,7 +40,7 @@ struct DayView: View, MonthlyCalendarManagerDirectAccess {
         Text(numericDay)
             .font(.footnote)
             .foregroundColor(foregroundColor)
-            .frame(width: CalendarConstants.Monthly.dayWidth, height: CalendarConstants.Monthly.dayWidth)
+            .frame(width: CalendarConstants.Monthly.dayWidth, height: UIDevice.current.model == "iPad" ? CalendarConstants.Monthly.dayWidth / 2 : CalendarConstants.Monthly.dayWidth)
             .background(backgroundColor)
             .clipShape(Circle())
             .opacity(opacity)
